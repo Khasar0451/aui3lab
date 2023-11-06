@@ -13,7 +13,7 @@ public class UpdateWeaponWithRequestFunction implements BiFunction<Weapon, Patch
         return Weapon.builder()
                 .uuid(entity.getUuid())         //from entity - can't be updated
                 .name(request.getName())        //from request - can be updated
-                .dwarf(request.getDwarf())
+                .dwarf(entity.getDwarf())
                 .swarmDamage(request.getSwarmDamage())
                 .build();
     }

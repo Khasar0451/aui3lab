@@ -37,21 +37,21 @@ public class WeaponDefaultController {
         return weaponsToResponseFunction.apply(service.findAll());
     }
 
-    @GetMapping("drg/weapons/{dwarfName}")
-    public GetWeaponsResponse getWeaponsByDwarf(@PathVariable String dwarfName){
-        return weaponsToResponseFunction.apply(service.findByDwarf(dwarfName));
-    }
+//    @GetMapping("/drg/weapons/{dwarfName}")
+//    public GetWeaponsResponse getWeaponsByDwarf(@PathVariable String dwarfName){
+//        return weaponsToResponseFunction.apply(service.findByDwarf(dwarfName));
+//    }
 
-    @GetMapping("drg/weapons/{name}")
-    public GetWeaponResponse getWeaponByName(@PathVariable String name) {
-        return service.find(name)
+    @GetMapping("/drg/weapons/{uuid}")
+    public GetWeaponResponse getWeaponByName(@PathVariable UUID uuid) {
+        return service.find(uuid)
                 .map(weaponToResponseFunction)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PatchMapping("drg/weapons")
-    public void patchWeapon(@RequestBody PatchWeaponRequest request){
-        service.find(request.getName())
+    @PatchMapping("/drg/weapons/{id}")
+    public void patchWeapon(@PathVariable UUID id, @RequestBody PatchWeaponRequest request){
+        service.find(id)
                         .ifPresentOrElse(
                                 weapon -> service.update(updateWeaponWithRequestFunction.apply(weapon, request)),
                                 () -> {

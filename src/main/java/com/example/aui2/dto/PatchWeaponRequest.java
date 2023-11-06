@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Builder
@@ -22,6 +24,6 @@ public class PatchWeaponRequest {
 
     private int swarmDamage;
 
-    private Dwarf dwarf;
+    private UUID UUIDdwarf;
 
 }

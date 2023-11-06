@@ -23,7 +23,7 @@ public class InitializeData implements InitializingBean {
 @Override
     public void afterPropertiesSet() throws Exception {
 Dwarf engineer = Dwarf.builder()
-        .uuid(UUID.randomUUID())
+        .uuid(UUID.fromString("d620af71-586c-4969-a54a-ed35dbc8dc5d"))
         .name("Engineer")
         .voicePitch(105)
         .build();
@@ -43,7 +43,7 @@ dwarfService.create(scout);
 dwarfService.create(gunner);
 
 Weapon autoShotgun = Weapon.builder()
-        .uuid(UUID.randomUUID())
+        .uuid(UUID.fromString("4c8684cb-25d4-406a-97f7-38b389e921fd"))
         .name("AutoShotgun")
         .swarmDamage(5)
         .dwarf(engineer)
