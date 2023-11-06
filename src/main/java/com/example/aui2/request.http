@@ -1,0 +1,25 @@
+GET localhost:8080/drg/weapons
+###
+GET localhost:8080/drg/dwarves
+
+###
+PUT http://localhost:8080/drg/weapons/9eaee866-6eb3-11ea-bc55-0242ac130003
+Content-Type: application/json
+{
+  "name": "Axe",
+  "swarmDamage": 3,
+  "dwarf": "d620af71-586c-4969-a54a-ed35dbc8dc5d"
+}
+###
+PATCH http://localhost:8080/drg/weapons
+Content-Type: application/json
+{
+"name": "AAAA"
+"swarmDamage": 0,
+"dwarf":
+}
+###
+DELETE localhost:8080/drg/weapons/Autocannon
+###
+GET localhost:8080/drg/weapons
+Accept: application/json
