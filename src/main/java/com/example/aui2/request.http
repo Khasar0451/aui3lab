@@ -75,8 +75,7 @@ Content-Type: application/json
 }
 ###
 
-#Chyba nie działa
-DELETE localhost:8080/drg/weapons/Autocannon
+DELETE localhost:8080/drg/weapons/4c8684cb-25d4-406a-97f7-38b389e921fd
 ###
 
 DELETE localhost:8080/drg/dwarves/d620af71-586c-4969-a54a-ed35dbc8dc5d

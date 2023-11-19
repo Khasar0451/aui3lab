@@ -92,7 +92,7 @@ public class WeaponDefaultController {
     public void deleteWeapon(@PathVariable UUID id) {
         service.find(id)
                 .ifPresentOrElse(
-                        dwarf -> service.delete(id),
+                        weapon -> service.delete(id),
                         () -> {
                             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
                         }

@@ -56,14 +56,21 @@ public class DwarfDefaultController {
 
     @DeleteMapping("/drg/dwarves/{id}")
     public void deleteDwarf(@PathVariable UUID id) {
-        try{
-            service.delete(id);
-        }
-        catch (Exception exception){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        service.find(id)
+                .ifPresentOrElse(
+                        dwarf -> service.delete(id),
+                        () -> {
+                            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                        }
+                );
     }
 
-
+//try{
+//        service.delete(id);
+//    }
+//        catch (Exception exception){
+//        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//    }
+//}
 
 }

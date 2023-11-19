@@ -28,7 +28,7 @@ public class Dwarf implements Comparable<Dwarf>, Serializable {
     int voicePitch;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "dwarf", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "dwarf", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Weapon> weapons = new ArrayList<>();
 
     public void addWeapon(Weapon w){
