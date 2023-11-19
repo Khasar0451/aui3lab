@@ -17,8 +17,13 @@ import java.util.UUID;
 public class Weapon implements Comparable<Weapon>, Serializable {
     @Id
     UUID uuid;
+
+    @Column
     String name;
+
+    @Column
     int swarmDamage;
+
     @ManyToOne
     @JoinColumn(name = "dwarf")
     Dwarf dwarf;

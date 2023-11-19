@@ -35,9 +35,9 @@ public class ApplicationCommand implements CommandLineRunner {
                     weaponService.weaponRepo.findAll().forEach(System.out::println);
                 }
                 case "get_weapons_by_dwarf" -> {
-                    System.out.println("Dwarf:");
+                    System.out.println("Dwarf's uuid:");
                     String dwarf = scanner.next();
-                    weaponService.findByDwarf(dwarf).forEach(System.out::println);
+                    weaponService.findByDwarf(UUID.fromString(dwarf)).forEach(System.out::println);
                 }
                 case "delete_weapon" -> {
                     UUID uuid = UUID.fromString(scanner.next());

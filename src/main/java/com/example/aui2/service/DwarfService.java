@@ -1,6 +1,7 @@
 package com.example.aui2.service;
 
 import com.example.aui2.entity.Dwarf;
+import com.example.aui2.entity.Weapon;
 import com.example.aui2.repository.DwarfRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,10 @@ public class DwarfService {
     public Optional<Dwarf> find(UUID uuid){
         return dwarfRepo.findByUuid(uuid);
     }
+    public List<Weapon> findWeaponsByDwarf(String name) {
+        return dwarfRepo.findByName(name).get().getWeapons();
+    }
+
     public List<Dwarf> findAll(){
         return dwarfRepo.findAll();
     }

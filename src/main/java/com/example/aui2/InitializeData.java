@@ -37,10 +37,16 @@ Dwarf gunner = Dwarf.builder()
         .name("Gunner")
         .voicePitch(90)
         .build();
+Dwarf driller = Dwarf.builder()
+        .uuid(UUID.fromString("04510451-4242-4242-4242-045104510451"))
+        .name("Driller")
+        .voicePitch(85)
+        .build();
 
 dwarfService.create(engineer);
 dwarfService.create(scout);
 dwarfService.create(gunner);
+dwarfService.create(driller);
 
 Weapon autoShotgun = Weapon.builder()
         .uuid(UUID.fromString("4c8684cb-25d4-406a-97f7-38b389e921fd"))

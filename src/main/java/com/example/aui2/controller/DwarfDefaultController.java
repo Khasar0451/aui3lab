@@ -25,29 +25,16 @@ public class DwarfDefaultController {
         this.dwarfToResponseFunction = dwarfToResponseFunction;
         this.dwarvesToResponseFunction = dwarvesToResponseFunction;
     }
-@ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-
     @GetMapping("/drg/dwarves")
     public GetDwarvesResponse getDwarves() {
         if (service.findAll().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return dwarvesToResponseFunction.apply(service.findAll());
     }
-//    public GetDwarvesResponse getDwarves() {
-//        return service.findAll()
-//                .map(dwarvesToResponseFunction)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//    }
-//    @GetMapping("/drg/dwarves/{name}")
-//    @ResponseStatus(HttpStatus.OK)
-//    @ResponseBody
-//    public GetDwarfResponse getDwarf(String name) {
-//        return service.find(name)
-//                .map(dwarfToResponseFunction)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//    }
+
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @GetMapping("/drg/dwarves/{uuid}")
@@ -56,15 +43,25 @@ public class DwarfDefaultController {
                 .map(dwarfToResponseFunction)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    //chyba w końcu jest w weapon contrleer
+//    @ResponseStatus(HttpStatus.OK)
+//    @ResponseBody
+//    @GetMapping("/drg/dwarves/{uuid}")
+//    public GetDwarfResponse getWeaponsFromDwarf(@PathVariable UUID uuid) {
+//        return service.find(uuid)
+//                .map(dwarfToResponseFunction)
+//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//    }
+
     @DeleteMapping("/drg/dwarves/{id}")
     public void deleteDwarf(@PathVariable UUID id) {
-        service.find(id)
-                .ifPresentOrElse(
-                        dwarf -> service.delete(id),
-                        () -> {
-                            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-                        }
-                );
+        try{
+            service.delete(id);
+        }
+        catch (Exception exception){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
 

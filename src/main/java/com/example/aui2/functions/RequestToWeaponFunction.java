@@ -1,6 +1,5 @@
 package com.example.aui2.functions;
 
-import com.example.aui2.dto.GetWeaponsResponse;
 import com.example.aui2.dto.PutWeaponRequest;
 import com.example.aui2.entity.Dwarf;
 import com.example.aui2.entity.Weapon;
@@ -18,9 +17,8 @@ public class RequestToWeaponFunction implements BiFunction<UUID, PutWeaponReques
                 .uuid(id)
                 .name(request.getName())
                 .dwarf(Dwarf.builder()
-                        .uuid(request.getUUIDdwarf())
+                        .uuid(request.getUuid())
                         .build())
-                //.dwarf(request.getUUIDdwarf())
                 .swarmDamage(request.getSwarmDamage())
                 .build();
     }

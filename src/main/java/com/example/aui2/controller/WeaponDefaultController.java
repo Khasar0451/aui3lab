@@ -3,6 +3,7 @@ import com.example.aui2.dto.GetWeaponResponse;
 import com.example.aui2.dto.GetWeaponsResponse;
 import com.example.aui2.dto.PatchWeaponRequest;
 import com.example.aui2.dto.PutWeaponRequest;
+import com.example.aui2.entity.Weapon;
 import com.example.aui2.functions.RequestToWeaponFunction;
 import com.example.aui2.functions.UpdateWeaponWithRequestFunction;
 import com.example.aui2.functions.WeaponToResponseFunction;
@@ -14,10 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@Log
+
 public class WeaponDefaultController {
     private final WeaponService service;
     private final WeaponToResponseFunction weaponToResponseFunction;
@@ -37,10 +39,23 @@ public class WeaponDefaultController {
         return weaponsToResponseFunction.apply(service.findAll());
     }
 
-//    @GetMapping("/drg/weapons/{dwarfName}")
-//    public GetWeaponsResponse getWeaponsByDwarf(@PathVariable String dwarfName){
-//        return weaponsToResponseFunction.apply(service.findByDwarf(dwarfName));
-//    }
+    @GetMapping("/drg/dwarves/{uuid}/weapons")
+    public GetWeaponsResponse getWeaponsByDwarf(@PathVariable UUID uuid){
+        List<Weapon> weaponList = null;
+        try {
+            weaponList = service.findByDwarf(uuid);
+            if (weaponList.isEmpty()){
+                throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+            }
+            return weaponsToResponseFunction.apply(service.findByDwarf(uuid));
+        }
+        catch(Exception e) {
+            if (weaponList.isEmpty())
+                throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+        return null;
+    }
+
 
     @GetMapping("/drg/weapons/{uuid}")
     public GetWeaponResponse getWeaponByName(@PathVariable UUID uuid) {
@@ -60,28 +75,27 @@ public class WeaponDefaultController {
                         );
     }
     @PutMapping("/drg/weapons/{id}")
-    public void putWeapon(@PathVariable UUID id, @RequestBody PutWeaponRequest request) {
-        service.create(requestToWeaponFunction.apply(id, request));
+    @ResponseStatus(HttpStatus.CREATED)
+
+    public void putWeapon(@PathVariable UUID id, @RequestBody PutWeaponRequest request) throws Exception {
+       try {
+           service.create(requestToWeaponFunction.apply(id, request));
+       }
+    catch (Exception exception){
+           System.out.println(id);
+           throw new Exception(exception);
+            //throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
-//    @DeleteMapping("/drg/weapons/{id}")
-//    public void deleteWeapon(@PathVariable UUID id) {
-//        service.find(id)
-//                .ifPresentOrElse(
-//                        dwarf -> service.delete(id),
-//                        () -> {
-//                            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//                        }
-//                );
-//    }
-    @DeleteMapping("/drg/weapons/{name}")
-    public void deleteWeapon(@PathVariable String name) {
-        service.find(name)
+
+    @DeleteMapping("/drg/weapons/{id}")
+    public void deleteWeapon(@PathVariable UUID id) {
+        service.find(id)
                 .ifPresentOrElse(
-                        dwarf -> service.delete(name),
+                        dwarf -> service.delete(id),
                         () -> {
                             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
                         }
                 );
     }
-
 }

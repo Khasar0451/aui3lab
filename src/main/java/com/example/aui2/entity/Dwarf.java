@@ -20,9 +20,13 @@ import java.util.UUID;
 public class Dwarf implements Comparable<Dwarf>, Serializable {
     @Id
     UUID uuid;
+
     @Column(unique = true)
     String name;
+
+    @Column
     int voicePitch;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "dwarf", fetch = FetchType.LAZY)
     List<Weapon> weapons = new ArrayList<>();
