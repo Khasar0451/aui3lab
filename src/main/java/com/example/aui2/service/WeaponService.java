@@ -20,12 +20,9 @@ public class WeaponService {
     WeaponService(WeaponRepo w, DwarfService d){
         weaponRepo = w; dwarfService = d;
     }
-    //public List<Weapon> findByDwarf(UUID uuid) {
-        //return weaponRepo.findByDwarf(dwarfService.find(uuid).get());
-    //}
+
     public List<Weapon> findByDwarf(UUID uuid) {
         return dwarfService.find(uuid).map(weaponRepo::findByDwarf).get();
-        //return weaponRepo.findByDwarf(dwarfService.find(uuid).get());
     }
     public List<Weapon> findAll(){
         return weaponRepo.findAll();
