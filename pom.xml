@@ -11,9 +11,15 @@
 	<groupId>com.example</groupId>
 	<artifactId>aui2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>aui2</name>
+    <packaging>pom</packaging>
+    <name>aui2</name>
 	<description>lab2</description>
-	<properties>
+    <modules>
+        <module>dwarf</module>
+        <module>dwarf</module>
+		<module>weapon</module>
+	</modules>
+    <properties>
 		<java.version>17</java.version>
 	</properties>
 
