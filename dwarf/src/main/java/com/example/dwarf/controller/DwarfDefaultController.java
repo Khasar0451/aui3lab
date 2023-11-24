@@ -1,10 +1,10 @@
-package com.example.aui2.controller;
-import com.example.aui2.dto.*;
-import com.example.aui2.functions.DwarfToResponseFunction;
-import com.example.aui2.functions.DwarvesToResponseFunction;
-import com.example.aui2.functions.RequestToDwarfFunction;
-import com.example.aui2.functions.UpdateDwarfWithRequestFunction;
-import com.example.aui2.service.DwarfService;
+package main.java.com.example.dwarf.controller;
+
+import main.java.com.example.dwarf.*;
+import main.java.com.example.dwarf.dto.*;
+import main.java.com.example.dwarf.*;
+import main.java.com.example.dwarf.service.DwarfService;
+import main.java.com.example.dwarf.functions.*;
 
 import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;

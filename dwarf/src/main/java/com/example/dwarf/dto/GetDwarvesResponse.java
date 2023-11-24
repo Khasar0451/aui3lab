@@ -1,4 +1,4 @@
-package com.example.aui2.dto;
+package main.java.com.example.dwarf.dto;
 import lombok.*;
 
 import java.util.List;

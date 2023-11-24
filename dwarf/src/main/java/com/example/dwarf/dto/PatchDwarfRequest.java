@@ -1,7 +1,5 @@
-package com.example.aui2.dto;
+package main.java.com.example.dwarf.dto;
 
-import com.example.aui2.entity.Dwarf;
-import com.example.aui2.entity.Weapon;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +23,6 @@ public class PatchDwarfRequest {
 
     private int voicePitch;
 
-    private List<Weapon> weapons;
+ //   private List<Weapon> weapons;
 
 }

@@ -1,9 +1,7 @@
-package com.example.aui2.dto;
+package main.java.com.example.dwarf.dto;
 
-import com.example.aui2.entity.Dwarf;
 import lombok.*;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter

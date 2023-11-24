@@ -1,7 +1,6 @@
-package com.example.aui2.dto;
+package main.java.com.example.dwarf.dto;
+import main.java.com.example.dwarf.*;
 
-import com.example.aui2.entity.Dwarf;
-import com.example.aui2.entity.Weapon;
 import lombok.*;
 
 import java.util.List;
@@ -18,6 +17,6 @@ import java.util.UUID;
 public class PutDwarfRequest {
     //fields that can be set up byt the user
     String name;
-    List<Weapon> weapons;
+    //List<Weapon> weapons;
     int voicePitch;
 }

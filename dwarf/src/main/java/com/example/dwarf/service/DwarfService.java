@@ -1,8 +1,8 @@
-package com.example.aui2.service;
+package main.java.com.example.dwarf.service;
 
-import com.example.aui2.entity.Dwarf;
+import main.java.com.example.dwarf.entity.Dwarf;
 import com.example.aui2.entity.Weapon;
-import com.example.aui2.repository.DwarfRepo;
+import main.java.com.example.dwarf.repository.DwarfRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,21 +26,22 @@ public class DwarfService {
         dwarfRepo.save(dwarf);
     }
 
-    public Optional<Dwarf> find(String name){
-        return dwarfRepo.findByName(name);
-    }
+//    public Optional<Dwarf> find(String name){
+//        return dwarfRepo.findByName(name);
+//    }
     public Optional<Dwarf> find(UUID uuid){
-        return dwarfRepo.findByUuid(uuid);
+        return dwarfRepo.findById(uuid);
+                //findByUuid(uuid);
     }
-    public List<Weapon> findWeaponsByDwarf(String name) {
-        return dwarfRepo.findByName(name).get().getWeapons();
-    }
+//    public List<Weapon> findWeaponsByDwarf(UUID id) {
+//        return dwarfRepo.findById(id).get().getWeapons();
+//    }
 
     public List<Dwarf> findAll(){
         return dwarfRepo.findAll();
     }
     public void delete(UUID uuid){
-        dwarfRepo.findByUuid(uuid).ifPresent(dwarfRepo::delete);
+        dwarfRepo.findById(uuid).ifPresent(dwarfRepo::delete);
     }
 
 }

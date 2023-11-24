@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import main.java.com.example.weapon.*;
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
 @Builder
-@Entity
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
+@EqualsAndHashCode
+@Entity
 @Table(name = "dwarves")
-public class Dwarf implements Comparable<Dwarf>, Serializable {
+public class Dwarf implements Serializable {
     @Id
     UUID uuid;
 
@@ -26,25 +27,4 @@ public class Dwarf implements Comparable<Dwarf>, Serializable {
 
     @Column
     int voicePitch;
-
-    @ToString.Exclude
-    @OneToMany(mappedBy = "dwarf", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    List<Weapon> weapons = new ArrayList<>();
-
-    public void addWeapon(Weapon w){
-        if (weapons == null) {
-           weapons = new ArrayList<>();
-        }
-        weapons.add(w);
-    }
-
-   @Override
-    public int compareTo(Dwarf p) {
-        return name.compareTo(p.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, voicePitch);
-    }
 }

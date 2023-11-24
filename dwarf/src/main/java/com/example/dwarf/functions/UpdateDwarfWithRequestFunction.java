@@ -1,7 +1,7 @@
-package com.example.aui2.functions;
+package main.java.com.example.dwarf.functions;
 
-import com.example.aui2.dto.PatchDwarfRequest;
-import com.example.aui2.entity.Dwarf;
+import main.java.com.example.dwarf.dto.PatchDwarfRequest;
+import main.java.com.example.dwarf.entity.Dwarf;
 import org.springframework.stereotype.Component;
 
 import java.util.function.BiFunction;
@@ -14,7 +14,7 @@ public class UpdateDwarfWithRequestFunction implements BiFunction<Dwarf, PatchDw
         return Dwarf.builder()
                 .uuid(entity.getUuid())         //from entity - can't be updated
                 .name(request.getName())        //from request - can be updated
-                .weapons(request.getWeapons())
+              //  .weapons(request.getWeapons())
                 .voicePitch(request.getVoicePitch())
                 .build();
     }

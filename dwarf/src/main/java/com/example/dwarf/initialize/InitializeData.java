@@ -1,4 +1,4 @@
-package com.example.aui2;
+package main.java.com.example.dwarf.initialize;
 
 import com.example.aui2.entity.Dwarf;
 import com.example.aui2.entity.Weapon;

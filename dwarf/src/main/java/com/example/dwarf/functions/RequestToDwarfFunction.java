@@ -1,7 +1,7 @@
-package com.example.aui2.functions;
+package main.java.com.example.dwarf.functions;
 
-import com.example.aui2.dto.PutDwarfRequest;
-import com.example.aui2.entity.Dwarf;
+import main.java.com.example.dwarf.dto.PutDwarfRequest;
+import main.java.com.example.dwarf.entity.Dwarf;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -16,7 +16,7 @@ public class RequestToDwarfFunction implements BiFunction<UUID, PutDwarfRequest,
                 .uuid(id)
                 .name(request.getName())
                 .voicePitch(request.getVoicePitch())
-                .weapons(request.getWeapons())
+         //       .weapons(request.getWeapons())
                 .build();
     }
 }

@@ -1,7 +1,8 @@
-package com.example.aui2.functions;
+package main.java.com.example.dwarf.functions;
 
-import com.example.aui2.dto.GetDwarvesResponse;
-import com.example.aui2.entity.Dwarf;
+import main.java.com.example.dwarf.dto.GetDwarvesResponse;
+import main.java.com.example.dwarf.entity.Dwarf;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
