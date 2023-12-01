@@ -22,20 +22,11 @@ public class DwarfService {
     public void create(Dwarf dwarf){
         dwarfRepo.save(dwarf);
     }
-    public void update(Dwarf dwarf){
-        dwarfRepo.save(dwarf);
-    }
 
     public Optional<Dwarf> find(UUID uuid){
         return dwarfRepo.findById(uuid);
     }
-//    public List<Weapon> findWeaponsByDwarf(UUID id) {
-//        return dwarfRepo.findById(id).get().getWeapons();
-//    }
-//
-//    public List<Dwarf> findAll(){
-//        return dwarfRepo.findAll();
-//    }
+
     public void delete(UUID uuid){
         dwarfRepo.findById(uuid).ifPresent(dwarfRepo::delete);
     }
