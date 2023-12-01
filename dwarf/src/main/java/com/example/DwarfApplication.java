@@ -1,7 +1,11 @@
 package main.java.com.example;
 
+import lombok.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class DwarfApplication {
@@ -9,4 +13,9 @@ public class DwarfApplication {
         SpringApplication.run(DwarfApplication.class, args);
     }
 
+    //producer
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplateBuilder().rootUri("http://localhost:8081").build();
+    }
 }

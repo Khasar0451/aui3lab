@@ -1,5 +1,6 @@
 package com.example.dwarf.controller;
 
+import com.example.dwarf.entity.Dwarf;
 import com.example.dwarf.service.DwarfService;
 
 import lombok.extern.java.Log;
@@ -48,19 +49,19 @@ public class DwarfDefaultController {
 //                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 //    }
 //
-//    @PutMapping("/drg/dwarves/{id}")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void putDwarf(@PathVariable UUID id, @RequestBody PutDwarfRequest request) throws Exception {
-//        try {
-//            service.create(requestToDwarfFunction.apply(id, request));
-//        }
-//        catch (Exception exception){
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-//        }
-//    }
-//
+    @PutMapping("/drg/dwarves/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void putDwarf(@PathVariable UUID id, @RequestBody Dwarf dwarf) throws Exception {
+        try {
+            service.create(dwarf);
+        }
+        catch (Exception exception){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 //    @PatchMapping("/drg/dwarves/{id}")
-//    public void patchWeapon(@PathVariable UUID id, @RequestBody PatchDwarfRequest request){
+//    public void patchWeapon(@PathVariable UUID id, @RequestBody Dwarf dwarf){
 //        service.find(id)
 //                .ifPresentOrElse(
 //                        dwarf -> service.update(updateDwarfWithRequestFunction.apply(dwarf, request)),
@@ -70,6 +71,7 @@ public class DwarfDefaultController {
 //                );
 //    }
 
+    @PutMapping("/drg/dwarves")
     @DeleteMapping("/drg/dwarves/{id}")
     public void deleteDwarf(@PathVariable UUID id) {
         service.find(id)
