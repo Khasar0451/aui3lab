@@ -30,7 +30,7 @@ public class DwarfDefaultController {
         }
     }
 
-    @PutMapping("/drg/dwarves")
+
     @DeleteMapping("/drg/dwarves/{id}")
     public void deleteDwarf(@PathVariable UUID id) {
         service.find(id)
