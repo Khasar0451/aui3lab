@@ -1,6 +1,4 @@
-export interface Dwarf {
-  id: string;
+export interface DwarfForm{
   name: string;
   voicePitch: number;
-
 }
