@@ -4,9 +4,8 @@ import { Observable } from "rxjs";
 import { Dwarves } from "../model/dwarves";
 import {Dwarf} from "../model/dwarf";
 import {DwarfForm} from "../model/dwarf-form";
-@Injectable({
-  providedIn: 'root'
-})
+import {DwarfDetails} from "../model/dwarf-details";
+@Injectable()
 export class DwarfService {
 
   constructor(private http: HttpClient) {
@@ -15,10 +14,10 @@ export class DwarfService {
   getDwarves(): Observable<Dwarves> {
     return this.http.get<Dwarves>('/drg/dwarves');
   }
-  getDwarf(): Observable<Dwarf> {
-    return this.http.get<Dwarf>('/drg/dwarf');
+  getDwarf(uuid: string): Observable<DwarfDetails> {
+    return this.http.get<DwarfDetails>('/drg/dwarves/' + uuid);
   }
-  deleteDwarves(uuid: string): Observable<any> {
+  deleteDwarf(uuid: string): Observable<any> {
     return this.http.delete('/drg/dwarves/' + uuid);
   }
 

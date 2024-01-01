@@ -17,7 +17,8 @@ export const routes: Routes = [
   {
     component: DwarfEditComponent,
     path: "dwarves/:uuid/edit"
-  }
+  },
+
 
 ];
 
