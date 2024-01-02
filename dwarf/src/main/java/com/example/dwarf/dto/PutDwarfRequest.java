@@ -13,6 +13,5 @@ import lombok.*;
 public class PutDwarfRequest {
     //fields that can be set up byt the user
     String name;
-    //List<Weapon> weapons;
     int voicePitch;
 }

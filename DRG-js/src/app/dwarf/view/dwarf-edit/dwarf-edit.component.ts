@@ -26,12 +26,10 @@ export class DwarfEditComponent implements OnInit{
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.weaponService.getWeapons()
-        .subscribe(weapons => this.weapons = weapons);
-
+   //   console.log(params['uuid'])
       this.dwarfService.getDwarf(params['uuid'])
         .subscribe(dwarf => {
-          this.uuid = dwarf.id;
+          this.uuid = params['uuid'] //dwarf.id;
           this.dwarf = {
             name: dwarf.name,
             voicePitch: dwarf.voicePitch,
