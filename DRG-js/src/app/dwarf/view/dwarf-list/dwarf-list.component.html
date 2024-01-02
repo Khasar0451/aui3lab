@@ -16,7 +16,10 @@
     <tbody>
     <tr *ngFor="let dwarf of dwarves?.dwarves">
       <td>
-        <a [routerLink]="['/dwarves', dwarf.id]">{{dwarf.name}}</a>
+        {{dwarf.name}}
+      </td>
+      <td>
+        <a [routerLink]="['/dwarves', dwarf.id]">View</a>
       </td>
       <td>
         <a [routerLink]="['/dwarves',dwarf.id, 'edit']">Edit</a>

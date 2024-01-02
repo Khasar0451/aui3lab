@@ -11,6 +11,10 @@ export const routes: Routes = [
     path: "dwarves"
   },
   {
+    component: DwarfAddComponent,
+    path: "dwarves/add"
+  },
+  {
     component: DwarfViewComponent,
     path: "dwarves/:uuid"
   }
@@ -19,10 +23,7 @@ export const routes: Routes = [
     component: DwarfEditComponent,
     path: "dwarves/:uuid/edit"
   },
-  {
-    component: DwarfAddComponent,
-    path: "dwarves/add"
-  }
+
 
 
 ];
