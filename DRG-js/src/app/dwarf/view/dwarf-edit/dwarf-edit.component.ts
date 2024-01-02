@@ -14,11 +14,9 @@ export class DwarfEditComponent implements OnInit{
   uuid: string | undefined;
   dwarf: DwarfForm |undefined;
   original: DwarfForm | undefined;
-  weapons: Weapons | undefined;
 
   constructor(
     private dwarfService: DwarfService,
-    private weaponService: WeaponService,
     private route: ActivatedRoute,
     private router: Router
   ) {
