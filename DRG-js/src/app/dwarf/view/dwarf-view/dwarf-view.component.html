@@ -1,1 +1,16 @@
-<p>dwarf-view works! put here dwarves</p>
+<article *ngIf="dwarf">
+  <header><h2>{{dwarf.name}}</h2></header>
+
+  <div>
+    Voice pitch: {{dwarf.voicePitch}}% <br><br>
+  </div>
+  <table>
+    Weapons:
+    <tr *ngFor="let weapon of weapons?.weapons">
+      <td>
+        {{weapon.name}}
+      </td>
+    </tr>
+  </table>
+
+</article>

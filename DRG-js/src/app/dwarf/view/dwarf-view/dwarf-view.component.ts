@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {DwarfDetails} from "../../model/dwarf-details";
 import {DwarfService} from "../../service/dwarf.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Weapons} from "../../../weapon/model/weapons";
+import {WeaponService} from "../../../weapon/service/weapon.service";
 
 @Component({
   selector: 'app-dwarf-view',
@@ -10,14 +12,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class DwarfViewComponent implements OnInit{
   dwarf: DwarfDetails | undefined;
-
-  constructor(private service: DwarfService, private route: ActivatedRoute, private router: Router) {
+  weapons: Weapons | undefined
+  constructor(private service: DwarfService, private weaponService: WeaponService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.service.getDwarf(params['uuid'])
         .subscribe(dwarf => this.dwarf = dwarf)
+      this.weaponService.getWeaponsByDwarf(params['uuid']).subscribe(weapons => this.weapons = weapons)
     });
   }
 }
