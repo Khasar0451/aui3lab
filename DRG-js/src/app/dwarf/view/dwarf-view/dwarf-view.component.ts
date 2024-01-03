@@ -4,6 +4,7 @@ import {DwarfService} from "../../service/dwarf.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Weapons} from "../../../weapon/model/weapons";
 import {WeaponService} from "../../../weapon/service/weapon.service";
+import {Weapon} from "../../../weapon/model/weapon";
 
 @Component({
   selector: 'app-dwarf-view',
@@ -22,5 +23,8 @@ export class DwarfViewComponent implements OnInit{
         .subscribe(dwarf => this.dwarf = dwarf)
       this.weaponService.getWeaponsByDwarf(params['uuid']).subscribe(weapons => this.weapons = weapons)
     });
+  }
+  onDelete(weapon:Weapon){
+    this.weaponService.deleteWeapon(weapon.id).subscribe(()=> this.ngOnInit());
   }
 }
