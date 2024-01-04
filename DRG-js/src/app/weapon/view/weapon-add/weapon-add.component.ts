@@ -6,9 +6,6 @@ import {WeaponForm} from "../../model/weaponForm";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WeaponService} from "../../service/weapon.service";
 import {DwarfService} from "../../../dwarf/service/dwarf.service";
-import {Dwarf} from "../../../dwarf/model/dwarf";
-import {DwarfDetails} from "../../../dwarf/model/dwarf-details";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-weapon-add',
@@ -28,7 +25,8 @@ export class WeaponAddComponent implements OnInit{
   }
   ngOnInit():void{
     this.route.params.subscribe(params =>
-      this.dwarfUuid = params['uuid']
+      {this.dwarfUuid = params['uuid']
+      console.log(this.dwarfUuid)}
     )
     this.weapon = {
       name:"",

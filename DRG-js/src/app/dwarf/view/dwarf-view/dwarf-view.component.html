@@ -1,5 +1,5 @@
 <article *ngIf="dwarf">
-  <header><h2>{{dwarf.name}}</h2></header>
+  <header><h2>{{dwarf.name}}{{dwarf.id}}</h2></header>
 
   <div>
     Voice pitch: {{dwarf.voicePitch}}% <br><br>
@@ -15,7 +15,7 @@
   </table>
 
   <h4>
-    <a [routerLink]="['/dwarves', dwarf.id, 'add']">Add new weapon</a>
+    <a [routerLink]="['/dwarves', dwarfID, 'add']">Add new weapon</a>
   </h4>
 
 

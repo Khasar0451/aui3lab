@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DwarfDetails} from "../../model/dwarf-details";
 import {DwarfService} from "../../service/dwarf.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Weapons} from "../../../weapon/model/weapons";
 import {WeaponService} from "../../../weapon/service/weapon.service";
 import {Weapon} from "../../../weapon/model/weapon";
@@ -13,17 +12,22 @@ import {Weapon} from "../../../weapon/model/weapon";
 })
 export class DwarfViewComponent implements OnInit{
   dwarf: DwarfDetails | undefined;
+  dwarfID: string | undefined
   weapons: Weapons | undefined
-  constructor(private service: DwarfService, private weaponService: WeaponService, private route: ActivatedRoute, private router: Router) {
+  constructor(private service: DwarfService, private weaponService: WeaponService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    console.log(this.dwarf?.id)
+
     this.route.params.subscribe(params => {
       this.service.getDwarf(params['uuid'])
+        //getdwarf daje dwarfa bez id?
         .subscribe(dwarf => this.dwarf = dwarf)
       this.weaponService.getWeaponsByDwarf(params['uuid']).subscribe(weapons => this.weapons = weapons)
+      this.dwarfID = params['uuid']
+      console.log(this.dwarfID)
     });
+
   }
   onDelete(weapon:Weapon){
     console.log(weapon.id)
