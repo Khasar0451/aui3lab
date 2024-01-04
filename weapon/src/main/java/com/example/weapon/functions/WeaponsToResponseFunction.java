@@ -19,6 +19,7 @@ public class WeaponsToResponseFunction implements Function<List<Weapon>, GetWeap
                         .map(weaponLambda -> GetWeaponsResponse.Weapon.builder()
                                 .uuid(weaponLambda.getUuid())
                                 .name(weaponLambda.getName())
+                                .id(weaponLambda.getUuid().toString())
                                 .build())
                         .toList())
                 .build();

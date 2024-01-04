@@ -24,6 +24,8 @@ public class GetWeaponsResponse {
     public static class Weapon{
         UUID uuid;
         String name;
+        String id;
+
     }
     @Singular
     List<Weapon> weapons;
