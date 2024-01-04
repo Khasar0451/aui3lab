@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DwarfDetails} from "../../model/dwarf-details";
 import {DwarfService} from "../../service/dwarf.service";
 import {Weapons} from "../../../weapon/model/weapons";
+import {ActivatedRoute} from "@angular/router";
 import {WeaponService} from "../../../weapon/service/weapon.service";
 import {Weapon} from "../../../weapon/model/weapon";
 
@@ -25,12 +26,10 @@ export class DwarfViewComponent implements OnInit{
         .subscribe(dwarf => this.dwarf = dwarf)
       this.weaponService.getWeaponsByDwarf(params['uuid']).subscribe(weapons => this.weapons = weapons)
       this.dwarfID = params['uuid']
-      console.log(this.dwarfID)
     });
 
   }
   onDelete(weapon:Weapon){
-    console.log(weapon.id)
     this.weaponService.deleteWeapon(weapon.id).subscribe(()=> this.ngOnInit());
   }
 }
