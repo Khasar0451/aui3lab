@@ -16,4 +16,5 @@ public class GetDwarfResponse {
     String name;
     UUID uuid;
     int voicePitch;
+    String id;
 }

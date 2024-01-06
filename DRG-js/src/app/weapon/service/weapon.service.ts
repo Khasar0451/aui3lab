@@ -23,7 +23,6 @@ export class WeaponService {
   }
 
   putWeapon(uuid:string, request:WeaponForm): Observable<any>{
-    console.log(uuid)
     return this.http.put<Weapon>('/drg/weapons/' + uuid, request)
   }
 

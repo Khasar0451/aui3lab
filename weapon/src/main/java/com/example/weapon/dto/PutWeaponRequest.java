@@ -16,6 +16,6 @@ public class PutWeaponRequest {
     //fields that can be set up byt the user
     String name;
     int swarmDamage;
-    UUID uuid;
-
+    String uuid;
+    String aha;
 }

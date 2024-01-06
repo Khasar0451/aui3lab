@@ -31,7 +31,7 @@ SimpleRpgGatewayApplication {
                                 "/drg/dwarves/{uuid}",
                                 "/drg/dwarves"
                         )
-                        .uri(dwarfUrl)
+                        .uri(dwarfUrl)  //url:port from application properties
                 )
                 .route("weapons", route -> route
                         .host(host)

@@ -30,14 +30,14 @@ export class WeaponAddComponent implements OnInit{
     this.weapon = {
       name:"",
       swarmDamage: 0,
-      dwarf:this.dwarfUuid!
+      uuid:this.dwarfUuid!
     }
-
     this.dwarfService.getDwarf(this.dwarfUuid!).subscribe(dwarf => this.dwarfName = dwarf.name)
   }
   onSubmit(): void {
-    console.log(this.weapon?.dwarf)
-    this.weaponService.putWeapon(uuidv4() ,this.weapon!)
-      .subscribe(() => this.router.navigate(['/dwarves/' + this.weapon?.dwarf]));
+    this.weapon!.uuid= this.dwarfUuid!
+
+    this.weaponService.putWeapon(uuidv4(), this.weapon!)
+      .subscribe(() => this.router.navigate(['/dwarves/' + this.weapon?.uuid]));
   }
 }

@@ -76,12 +76,12 @@ public class WeaponDefaultController {
     }
     @PutMapping("/drg/weapons/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void putWeapon(@PathVariable UUID id, @RequestBody PutWeaponRequest request) throws Exception {
+    public void putWeapon(@PathVariable String id, @RequestBody PutWeaponRequest request) throws Exception {
        try {
-           service.create(requestToWeaponFunction.apply(id, request));
+           service.create(requestToWeaponFunction.apply(UUID.fromString(id), request));
        }
     catch (Exception exception){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -17,7 +17,7 @@ public class RequestToWeaponFunction implements BiFunction<UUID, PutWeaponReques
                 .uuid(id)
                 .name(request.getName())
                 .dwarf(Dwarf.builder()
-                        .uuid(request.getUuid())
+                        .uuid(UUID.fromString(request.getUuid()))
                         .build())
                 .swarmDamage(request.getSwarmDamage())
                 .build();

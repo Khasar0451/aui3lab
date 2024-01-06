@@ -11,6 +11,7 @@ public class DwarfToResponseFunction implements Function<Dwarf, GetDwarfResponse
     public GetDwarfResponse apply(Dwarf entity) {
         return GetDwarfResponse.builder()
                 .uuid(entity.getUuid())
+                .id(entity.getUuid().toString())
                 .name(entity.getName())
                 .voicePitch(entity.getVoicePitch())
                 .build();
