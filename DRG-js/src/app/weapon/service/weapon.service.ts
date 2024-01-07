@@ -14,6 +14,9 @@ export class WeaponService {
   getWeapons(): Observable<Weapons> {
     return this.http.get<Weapons>('/drg/weapons');
   }
+  getWeapon(id: string): Observable<Weapon>{
+    return this.http.get<Weapon>('/drg/weapons/' + id)
+  }
   getWeaponsByDwarf(uuid: string): Observable<Weapons>{
     return this.http.get<Weapons>('/drg/dwarves/' + uuid + '/weapons')
   }
@@ -26,5 +29,8 @@ export class WeaponService {
     return this.http.put<Weapon>('/drg/weapons/' + uuid, request)
   }
 
+  patchWeapon(idDwarf:string, idWeapon:string, request:WeaponForm): Observable<any>{
+    return this.http.patch('/drg/dwarves/' + idDwarf + '/weapons/' + idWeapon, request);
+  }
   //putWeapon()
 }

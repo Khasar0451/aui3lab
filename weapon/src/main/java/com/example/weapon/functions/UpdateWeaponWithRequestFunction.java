@@ -4,6 +4,7 @@ import com.example.weapon.dto.PatchWeaponRequest;
 import com.example.weapon.entity.Weapon;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
 import java.util.function.BiFunction;
 @Component
 public class UpdateWeaponWithRequestFunction implements BiFunction<Weapon, PatchWeaponRequest, Weapon> {    //BiFunction - two types as input, one as output
@@ -17,5 +18,4 @@ public class UpdateWeaponWithRequestFunction implements BiFunction<Weapon, Patch
                 .swarmDamage(request.getSwarmDamage())
                 .build();
     }
-
 }

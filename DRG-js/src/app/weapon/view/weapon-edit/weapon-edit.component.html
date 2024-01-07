@@ -1,1 +1,20 @@
-<p>weapon-edit works!</p>
+<article *ngIf="weapon">
+  <header><h2>Edit weapon</h2></header>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name: </label>
+      <input [(ngModel)]="weapon.name" id="name" name="name"/>
+    </div>
+
+    <div>
+      <label for="swarmDamage">Swarm damage: </label>
+      <input [(ngModel)]="weapon.swarmDamage" id="swarmDamage" name="swarmDamage"/>
+    </div>
+
+    <div>
+      <button type="submit">Update</button>
+      <button (click)="form.resetForm(original)" type="button">Reset</button>
+    </div>
+  </form>
+</article>

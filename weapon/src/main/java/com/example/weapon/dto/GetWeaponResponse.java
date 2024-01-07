@@ -24,7 +24,9 @@ public class GetWeaponResponse {
     public static class Weapon{
         UUID uuid;
         String name;
+        int swarmDamage;
     }
     UUID uuid;
     String name;
+    int swarmDamage;
 }

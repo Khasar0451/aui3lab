@@ -5,6 +5,7 @@ import {DwarfEditComponent} from "./dwarf/view/dwarf-edit/dwarf-edit.component";
 import {NgModule} from "@angular/core";
 import {DwarfAddComponent} from "./dwarf/view/dwarf-add/dwarf-add.component";
 import {WeaponAddComponent} from "./weapon/view/weapon-add/weapon-add.component";
+import {WeaponEditComponent} from "./weapon/view/weapon-edit/weapon-edit.component";
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     component: WeaponAddComponent,
     path: "dwarves/:uuid/add"
+  },
+  {
+    component: WeaponEditComponent,
+    path: "dwarves/:idDwarf/weapons/:idWeapon/edit"
   }
 
 

@@ -32,10 +32,6 @@ public class WeaponService {
         weaponRepo.save(weapon);
     }
 
-    public Optional<Weapon> find(String name){
-        return (weaponRepo.findByName(name));
-    }
-
     public Optional<Weapon> find(UUID uuid){
         return (weaponRepo.findByUuid(uuid));
     }

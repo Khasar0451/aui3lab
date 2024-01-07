@@ -1,5 +1,5 @@
 <article *ngIf="dwarf">
-  <header><h2>{{dwarf.name}}{{dwarf.id}}</h2></header>
+  <header><h2>{{dwarf.name}}</h2></header>
 
   <div>
     Voice pitch: {{dwarf.voicePitch}}% <br><br>
@@ -9,8 +9,10 @@
     <tr *ngFor="let weapon of weapons?.weapons">
       <td>
         {{weapon.name}}
+        <a [routerLink]="['/dwarves', dwarfID,  'weapons',  weapon.id,  'edit']">Edit</a>
         <button (click)="onDelete(weapon)">Delete</button>
       </td>
+
     </tr>
   </table>
 

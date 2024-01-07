@@ -22,7 +22,6 @@ export class DwarfViewComponent implements OnInit{
 
     this.route.params.subscribe(params => {
       this.service.getDwarf(params['uuid'])
-        //getdwarf daje dwarfa bez id?
         .subscribe(dwarf => this.dwarf = dwarf)
       this.weaponService.getWeaponsByDwarf(params['uuid']).subscribe(weapons => this.weapons = weapons)
       this.dwarfID = params['uuid']
@@ -32,4 +31,5 @@ export class DwarfViewComponent implements OnInit{
   onDelete(weapon:Weapon){
     this.weaponService.deleteWeapon(weapon.id).subscribe(()=> this.ngOnInit());
   }
+
 }

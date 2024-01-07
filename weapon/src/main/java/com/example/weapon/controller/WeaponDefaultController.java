@@ -40,6 +40,12 @@ public class WeaponDefaultController {
     public GetWeaponsResponse getWeapons(){
         return weaponsToResponseFunction.apply(service.findAll());
     }
+    @GetMapping("drg/weapons/{uuid}")
+    public GetWeaponResponse getWeapon(@PathVariable UUID uuid){
+        return service.find(uuid)
+                .map(weaponToResponseFunction)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
 
     @GetMapping("/drg/dwarves/{uuid}/weapons")
     public GetWeaponsResponse getWeaponsByDwarf(@PathVariable UUID uuid) {
@@ -56,14 +62,6 @@ public class WeaponDefaultController {
         }
         return weaponsToResponseFunction.apply(weapons);
     }
-
-    @GetMapping("/drg/weapons/{uuid}")
-    public GetWeaponResponse getWeaponByName(@PathVariable UUID uuid) {
-        return service.find(uuid)
-                .map(weaponToResponseFunction)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
     @PatchMapping("/drg/weapons/{id}")
     public void patchWeapon(@PathVariable UUID id, @RequestBody PatchWeaponRequest request){
         service.find(id)
@@ -74,6 +72,17 @@ public class WeaponDefaultController {
                                 }
                         );
     }
+    @PatchMapping("/drg/dwarves/{idDwarf}/weapons/{idWeapon}")
+    public void patchWeapon(@PathVariable UUID idDwarf,@PathVariable UUID idWeapon, @RequestBody PatchWeaponRequest request){
+        request.setUUIDdwarf(idDwarf);
+        service.find(idWeapon)
+                        .ifPresentOrElse(
+                                weapon -> service.update(updateWeaponWithRequestFunction.apply(weapon, request)),
+                                () -> {
+                                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+                                }
+                        );
+    }
     @PutMapping("/drg/weapons/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public void putWeapon(@PathVariable String id, @RequestBody PutWeaponRequest request) throws Exception {
@@ -81,7 +90,7 @@ public class WeaponDefaultController {
            service.create(requestToWeaponFunction.apply(UUID.fromString(id), request));
        }
     catch (Exception exception){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
