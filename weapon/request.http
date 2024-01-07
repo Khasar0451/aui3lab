@@ -1,0 +1,66 @@
+//d620af71-586c-4969-a54a-ed35dbc8dc5d engineer
+//4c8684cb-25d4-406a-97f7-38b389e921fd shotgun
+//04510451-4242-4242-4242-045104510451 no weapon driller
+//11111111-1111-1111-1111-111111111111 not existing
+
+#Get all weapons
+GET localhost:8081/drg/weapons
+###
+
+#Get all weapons from dwarf
+GET localhost:8081/drg/dwarves/d620af71-586c-4969-a54a-ed35dbc8dc5d/weapons
+###
+
+#Get all weapons from dwarf with no weapons
+GET localhost:8081/drg/dwarves/04510451-4242-4242-4242-045104510451/weapons
+###
+
+#Get all weapons from not existing dwarf
+GET localhost:8081/drg/dwarves/11111111-1111-1111-1111-111111111111/weapons
+###
+
+#Get single weapon
+GET localhost:8081/drg/weapons/4c8684cb-25d4-406a-97f7-38b389e921fd
+###
+
+#Get single not existing weapon - not found
+GET localhost:8081/drg/weapons/4c8684cb-25d4-406a-97f7-045104510451
+###
+
+#Put new weapon
+PUT localhost:8081/drg/weapons/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "name": "Axe",
+  "swarmDamage": 3,
+  "uuid": "d620af71-586c-4969-a54a-ed35dbc8dc5d"
+}
+###
+
+#Put new weapon to not existing dwarf
+PUT localhost:8081/drg/weapons/00000000-0000-0000-5555-000000000000
+Content-Type: application/json
+
+{
+"name": "Axe",
+"swarmDamage": 3,
+"uuid": "d620af71-0000-4969-a54a-045104510451"
+}
+###
+
+#Patch weapon
+PATCH http://localhost:8081/drg/weapons/4c8684cb-25d4-406a-97f7-38b389e921fd
+Content-Type: application/json
+
+{
+"name": "Elven Bow",
+"swarmDamage": -10,
+"dwarf":"d620af71-586c-4969-a54a-ed35dbc8dc5d"
+}
+###
+
+#Delete patched weapon
+DELETE localhost:8081/drg/weapons/4c8684cb-25d4-406a-97f7-38b389e921fd
+###
+

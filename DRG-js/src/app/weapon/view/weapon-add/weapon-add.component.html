@@ -1,0 +1,19 @@
+<article *ngIf="weapon">
+  <header><h2>Add weapon for {{dwarfName}}</h2></header>
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name: </label>
+      <input [(ngModel)]="weapon.name" id="name" name="name"/>
+    </div>
+
+    <div>
+      <label for="swarmDamage">Swarm damage: </label>
+      <input [(ngModel)]="weapon.swarmDamage" id="swarmDamage" name="swarmDamage"/>
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</article>

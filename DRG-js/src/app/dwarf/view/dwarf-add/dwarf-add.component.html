@@ -1,0 +1,19 @@
+<article *ngIf="dwarf">
+  <header><h2>Add dwarf</h2></header>
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name: </label>
+      <input [(ngModel)]="dwarf.name" id="name" name="name"/>
+    </div>
+
+    <div>
+      <label for="voicePitch">Voice pitch: </label>
+      <input [(ngModel)]="dwarf.voicePitch" id="voicePitch" name="voicePitch"/>
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</article>
