@@ -9,8 +9,12 @@
     <tr *ngFor="let weapon of weapons?.weapons">
       <td>
         {{weapon.name}}
+        <a [routerLink]="['/dwarves', dwarfID,  'weapons',  weapon.id,  'view']">View</a>
+        &nbsp;
         <a [routerLink]="['/dwarves', dwarfID,  'weapons',  weapon.id,  'edit']">Edit</a>
+        &nbsp;
         <button (click)="onDelete(weapon)">Delete</button>
+        <hr>
       </td>
 
     </tr>
