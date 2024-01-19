@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  weapon:
+    image: weapon:1.0.0-SNAPSHOT
+    restart: always
+
+  dwarf:
+    image: dwarf:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      WEAPON_URL: "http://weapon:8080"
+
+  gateway:
+    image: gateway:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      WEAPON_URL: "http://weapon:8080"
+      DWARF_URL: "http://dwarf:8080"
+      GATEWAY_HOST: "gateway:8080"
+
+  angular:
+    image: angular:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      API_URL: http://gateway:8080/drg
+    ports:
+      - "8087:80"

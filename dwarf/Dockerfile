@@ -3,7 +3,7 @@ FROM eclipse-temurin:17.0.6_10-jre
 LABEL build_version=""
 LABEL maintainer=""
 
-ENV VERSION="1.0.0-SNAPSHOT"
+ENV VERSION="0.0.1-SNAPSHOT"
 
 ENV SERVER_PORT=8080
 
@@ -18,7 +18,7 @@ ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
 ENV SPRING_H2_CONSOLE_enabled=true
 
-ENV RPG_CHARACTER_URL=http://localhost:8081
+ENV WEAPON_URL=http://localhost:8081
 
 EXPOSE 8080
 
