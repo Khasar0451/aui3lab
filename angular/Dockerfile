@@ -9,5 +9,5 @@ ENV API_URL http://localhost:8080/drg
 
 EXPOSE 80
 
-ADD dist/simple-rpg-ng /usr/share/nginx/html/
+ADD dist/angular /usr/share/nginx/html/
 ADD docker/etc/nginx/templates/ /etc/nginx/templates/
