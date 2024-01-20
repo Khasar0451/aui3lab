@@ -2,11 +2,11 @@ version: '3'
 
 services:
   weapon:
-    image: weapon:1.0.0-SNAPSHOT
+    image: weapon:0.0.1-SNAPSHOT
     restart: always
 
   dwarf:
-    image: dwarf:1.0.0-SNAPSHOT
+    image: dwarf:0.0.1-SNAPSHOT
     restart: always
     environment:
       WEAPON_URL: "http://weapon:8080"
