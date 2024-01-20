@@ -2,16 +2,20 @@ version: '3'
 
 services:
   weapon:
+    build: ./weapon
     image: weapon:0.0.1-SNAPSHOT
+    container_name: weapon
     restart: always
 
   dwarf:
+    build: ./dwarf
     image: dwarf:0.0.1-SNAPSHOT
     restart: always
     environment:
       WEAPON_URL: "http://weapon:8080"
 
   gateway:
+    build: ./gateway
     image: gateway:1.0.0-SNAPSHOT
     restart: always
     environment:
@@ -20,6 +24,7 @@ services:
       GATEWAY_HOST: "gateway:8080"
 
   angular:
+    build: ./angular
     image: angular:1.0.0-SNAPSHOT
     restart: always
     environment:
