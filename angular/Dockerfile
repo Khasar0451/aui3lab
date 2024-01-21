@@ -5,6 +5,7 @@ LABEL maintainer=""
 
 ENV VERSION="1.0.0-SNAPSHOT"
 
+#ENV API_URL gateway:8080/drg
 ENV API_URL http://localhost:8080/drg
 
 EXPOSE 80
