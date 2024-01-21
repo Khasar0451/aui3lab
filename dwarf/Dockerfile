@@ -18,7 +18,7 @@ ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
 ENV SPRING_H2_CONSOLE_enabled=true
 
-ENV WEAPON_URL=http://localhost:8081
+ENV WEAPON_URL=http://weapon:8081
 
 EXPOSE 8080
 
