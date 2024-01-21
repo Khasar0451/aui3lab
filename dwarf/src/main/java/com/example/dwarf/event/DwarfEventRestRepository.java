@@ -2,7 +2,6 @@ package main.java.com.example.dwarf.event;
 
 import main.java.com.example.dwarf.entity.Dwarf;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
