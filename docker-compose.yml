@@ -3,7 +3,7 @@ version: '3'
 services:
   weapon:
     build: ./weapon
-    image: weapon:0.0.1-SNAPSHOT
+    image: weapon_image:latest
     container_name: weapon
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
 
   dwarf:
     build: ./dwarf
-    image: dwarf:0.0.1-SNAPSHOT
+    image: dwarf_image:latest
     restart: always
     environment:
       WEAPON_URL: "http://weapon:8080"
@@ -20,7 +20,7 @@ services:
 
   gateway:
     build: ./gateway
-    image: gateway:1.0.0-SNAPSHOT
+    image: gateway_image:latest
     restart: always
     environment:
       WEAPON_URL: "http://weapon:8080"
@@ -31,7 +31,7 @@ services:
 
   angular:
     build: ./angular
-    image: angular:1.0.0-SNAPSHOT
+    image: angular_image:latest
     restart: always
     environment:
       API_URL: http://gateway:8080/drg
