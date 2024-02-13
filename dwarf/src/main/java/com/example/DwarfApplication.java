@@ -1,6 +1,6 @@
 package main.java.com.example;
 
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -15,7 +15,7 @@ public class DwarfApplication {
 
     //producer
     @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplateBuilder().rootUri("http://localhost:8081").build();
+    public RestTemplate restTemplate(@Value("${weapon.url}") String url) {
+        return new RestTemplateBuilder().rootUri(url).build();
     }
 }

@@ -18,9 +18,9 @@ SimpleRpgGatewayApplication {
     @Bean
     public RouteLocator routeLocator(
             RouteLocatorBuilder builder,
-            @Value("${drg.weapon.url}") String weaponUrl,
-            @Value("${drg.dwarf.url}") String dwarfUrl,
-            @Value("${drg.gateway.host}") String host
+            @Value("${weapon.url}") String weaponUrl,
+            @Value("${dwarf.url}") String dwarfUrl,
+            @Value("${gateway.host}") String host
     ) {
         return builder
                 .routes()
