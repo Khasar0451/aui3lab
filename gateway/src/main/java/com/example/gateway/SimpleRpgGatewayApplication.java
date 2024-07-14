@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class
-Gateway {
+SimpleRpgGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Gateway.class, args);
+        SpringApplication.run(SimpleRpgGatewayApplication.class, args);
     }
 
     @Bean
