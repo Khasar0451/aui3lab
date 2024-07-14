@@ -1,0 +1,33 @@
+<article class="text--justified">
+  <header><h2>Dwarves</h2></header>
+  <h4>
+    <a [routerLink]="['/dwarves/add']">Add new dwarf</a>
+  </h4>
+
+  <table *ngIf="dwarves">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dwarf of dwarves?.dwarves">
+      <td>
+        {{dwarf.name}}
+      </td>
+      <td>
+        <a [routerLink]="['/dwarves', dwarf.id]">View</a>
+      </td>
+      <td>
+        <a [routerLink]="['/dwarves',dwarf.id, 'edit']">Edit</a>
+      </td>
+      <td>
+        <button (click)="onDelete(dwarf)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</article>

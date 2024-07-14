@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  weapon:
+    build: ./weapon
+    image: weapon_image:latest
+    container_name: weapon
+    restart: always
+
+  dwarf:
+    build: ./dwarf
+    image: dwarf_image:latest
+    restart: always
+    environment:
+      WEAPON_URL: "http://weapon:8080"
+
+  gateway:
+    build: ./gateway
+    image: gateway_image:latest
+    restart: always
+    environment:
+      WEAPON_URL: "http://weapon:8080"
+      DWARF_URL: "http://dwarf:8080"
+      GATEWAY_HOST: "gateway:8080"
+
+  angular:
+    build: ./angular
+    image: angular_image:latest
+    restart: always
+    environment:
+      API_URL: http://gateway:8080/drg
+    ports:
+      - "8087:80"

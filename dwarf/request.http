@@ -1,0 +1,40 @@
+//d620af71-586c-4969-a54a-ed35dbc8dc5d engineer
+//4c8684cb-25d4-406a-97f7-38b389e921fd shotgun
+//04510451-4242-4242-4242-045104510451 no weapon driller
+//11111111-1111-1111-1111-111111111111 not existing
+
+#Get all dwarves
+GET localhost:8080/drg/dwarves
+###
+
+#Get single dwarf
+GET localhost:8080/drg/dwarves/d620af71-586c-4969-a54a-ed35dbc8dc5d
+###
+
+#Get single not existing dwarf - not found
+GET localhost:8080/drg/dwarves/d620af71-586c-4969-a54a-045104510451
+###
+
+#Put new dwarf
+PUT localhost:8080/drg/dwarves/45100000-0000-0000-5555-000000000000
+Content-Type: application/json
+
+{
+  "name": "Greenbeard",
+  "voicePitch": 125
+}
+###
+
+#Patch dwarf
+PATCH http://localhost:8080/drg/dwarves/45100000-0000-0000-5555-000000000000
+Content-Type: application/json
+
+{
+  "name": "Greybeard",
+  "voicePitch": 105
+}
+###
+
+#Delete engineer
+DELETE localhost:8080/drg/dwarves/d620af71-586c-4969-a54a-ed35dbc8dc5d
+###
